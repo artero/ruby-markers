@@ -13,7 +13,7 @@
     "activationEvents": [
         "onCommand:extension.sayHello",
         "onCommand:extension.evaluate",
-        "onCommand:extension.add_mark"
+        "onCommand:extension.addMark"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -27,7 +27,7 @@
             "title": "Ruby Markers: Evaluate Marks"
           },
           {
-            "command": "extension.add_mark",
+            "command": "extension.addMark",
             "title": "Ruby Markers: Add Mark"
           }
         ],
@@ -37,7 +37,7 @@
                 "key": "cmd+ctrl+e"
             },
             {
-                "command": "extension.add_mark",
+                "command": "extension.addMark",
                 "key": "cmd+ctrl+m"
             }
         ]
