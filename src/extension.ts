@@ -16,11 +16,11 @@ export function activate(context: vscode.ExtensionContext) {
   });
 
   let evaluate = vscode.commands.registerCommand('extension.evaluate', () => {
-    marker.evaluate();
+    marker.evaluate(vscode.window.activeTextEditor);
   });
 
   let addMark = vscode.commands.registerCommand('extension.addMark', () => {
-    marker.addMark();
+    marker.addMark(vscode.window.activeTextEditor);
   });
 
   context.subscriptions.push(hello);
@@ -33,11 +33,7 @@ export function deactivate() {
 }
 
 class Markers {
-  public evaluate(){
-        // The code you place here will be executed every time your command is executed
-
-    // Display a message box to the user
-    const editor = vscode.window.activeTextEditor;
+  public evaluate(editor){
     const document = editor.document;
     let content = document.getText().replace(/"/g, "\\\"");
     let comand = 'echo "' + content + '" | xmpfilter';
@@ -56,21 +52,22 @@ class Markers {
     });
   }
 
-  public addMark(){
+  public addMark(editor){
     console.log('add mark');
-    const editor = vscode.window.activeTextEditor;
-    const document = editor.document;
     editor.edit((editBuilder) => {
       for (let selection of editor.selections) {
         let line = selection.end.line
-        var lineText = document.lineAt(line).text
+        var lineText = editor.document.lineAt(line).text
         var pos1 = new vscode.Position(line, 0);
         var pos2 = new vscode.Position(line, lineText.length);
         var range = new vscode.Range(pos1, pos2);
-        var spaces = (lineText.length < 50) ? 50 - lineText.length : 1
-        var output = lineText + " ".repeat(spaces) + "# =>"
-        editBuilder.replace(range, output);
+        editBuilder.replace(range, this.add_mark_at(lineText));
       }
     });
+  }
+
+  private add_mark_at(line: string) {
+    var spaces = (line.length < 50) ? 50 - line.length : 1
+    return (line.length == 0 || line == "# =>" ) ? "# =>" : line + " ".repeat(spaces) + "# =>"
   }
 }
