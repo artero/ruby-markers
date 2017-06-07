@@ -5,7 +5,7 @@ Visual Studio Code Extension to runs Ruby in the editor.
 ![introduction](images/how_it_works.gif)
 
 
-## Dependencies
+## Dependencies
 
 **This extension only works in MAC OSX.**
 
@@ -28,6 +28,6 @@ $ gem install rcodetools
 2. press CMD+CTRL+e to execute the ruby code
 
 
-## Contribute
+## Contribute
 
 [You can help me in the GitHub repository](https://github.com/artero/-ruby-marker)
