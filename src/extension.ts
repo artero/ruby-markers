@@ -7,13 +7,9 @@ import * as childProcess from 'child_process';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  console.log('Congratulations, your extension "ruby-markers" is now active!');
-
   let marker = new Markers();
-
-  let hello = vscode.commands.registerCommand('extension.sayHello', () => {
-    vscode.window.showInformationMessage('Hello World, Ruby Markers!');
-  });
+  console.log('Congratulations, your extension "ruby-markers" is now active!');
+  marker.validateDependencies();
 
   let evaluate = vscode.commands.registerCommand('extension.evaluate', () => {
     marker.evaluate(vscode.window.activeTextEditor);
@@ -33,6 +29,15 @@ export function deactivate() {
 }
 
 class Markers {
+  public validateDependencies(){
+    let comand = 'xmpfilter -v'
+    let ls = childProcess.exec(comand, function (error, stdout, stderr) {
+      if (error) {
+        vscode.window.showErrorMessage('RUBY-MARKERS Require the command xmpfilter installed in your system, please read the README');
+      }
+    });
+  }
+
   public evaluate(editor){
     const document = editor.document;
     let content = document.getText().replace(/"/g, "\\\"");
@@ -46,7 +51,8 @@ class Markers {
           let pos1 = new vscode.Position(0, 0);
           let pos2 = new vscode.Position(document.lineCount-1, document.lineAt(document.lineCount-1).text.length);
           let range = new vscode.Range(pos1, pos2);
-          editBuilder.replace(range, stdout);
+
+          editBuilder.replace(range, stdout.replace(/\n$/, ""));
         });
       }
     });
