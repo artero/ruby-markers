@@ -19,7 +19,6 @@ export function activate(context: vscode.ExtensionContext) {
     marker.addMark(vscode.window.activeTextEditor);
   });
 
-  context.subscriptions.push(hello);
   context.subscriptions.push(evaluate);
   context.subscriptions.push(addMark);
 }

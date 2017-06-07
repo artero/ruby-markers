@@ -3,7 +3,7 @@
     "displayName": "Ruby Markers",
     "description": "Evalute Ruby code in the editor just typing # =>",
     "version": "0.1.0",
-    "publisher": "artero",
+    "publisher": "juanartero",
     "engines": {
         "vscode": "^1.10.0"
     },
@@ -15,6 +15,11 @@
         "onCommand:extension.evaluate",
         "onCommand:extension.addMark"
     ],
+    "homepage": "https://github.com/artero/ruby-markers",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/artero/ruby-markers"
+    },
     "main": "./out/src/extension",
     "contributes": {
         "commands": [
