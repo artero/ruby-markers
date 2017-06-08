@@ -2,7 +2,7 @@
     "name": "ruby-markers",
     "displayName": "Ruby Markers",
     "description": "Evalute Ruby code in the editor just typing # =>",
-    "version": "0.1.0",
+    "version": "0.2.1",
     "publisher": "juanartero",
     "engines": {
         "vscode": "^1.10.0"
@@ -20,19 +20,20 @@
         "type": "git",
         "url": "https://github.com/artero/ruby-markers"
     },
+    "icon": "images/icon.png",
     "main": "./out/src/extension",
     "contributes": {
         "commands": [
-          {
-            "command": "extension.evaluate",
-            "title": "Ruby Markers: Evaluate Marks"
-          },
-          {
-            "command": "extension.addMark",
-            "title": "Ruby Markers: Add Mark"
-          }
+            {
+                "command": "extension.evaluate",
+                "title": "Ruby Markers: Evaluate Marks"
+            },
+            {
+                "command": "extension.addMark",
+                "title": "Ruby Markers: Add Mark"
+            }
         ],
-        "keybindings":[
+        "keybindings": [
             {
                 "command": "extension.evaluate",
                 "key": "cmd+ctrl+e"
