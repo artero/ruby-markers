@@ -30,4 +30,4 @@ $ gem install rcodetools
 
 ## Contribute
 
-[You can help me in the GitHub repository](https://github.com/artero/-ruby-marker)
+[You can help in GitHub repository](https://github.com/artero/-ruby-marker)
