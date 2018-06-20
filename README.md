@@ -7,8 +7,6 @@ Visual Studio Code Extension to runs Ruby in the editor.
 
 ## Dependencies
 
-**This extension only works in MAC OSX.**
-
 You need xmpfilter to be installed. If you don't know if you have it installed, you can type this in your console:
 
 ```
@@ -18,8 +16,10 @@ $ xmpfilter -v
 If you don't have it installed, you can install it via [rcodetools](https://github.com/JoshCheek/rcodetools). To install the gem type:
 
 ```
-$ gem install rcodetools
+  $ gem install rcodetools
 ```
+
+**This extension only tested in MAC OSX, If you are using this Ruby-Markers in Windows your comments are welcome.**
 
 
 ## Usage
